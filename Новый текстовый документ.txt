@@ -1,9 +1,0 @@
-import requests
-#site = input('Enter site: ')
-#site = 'https://'+site
-rect = requests.get('http://httpbin.org/status/410')
-print(rect.status_code)
-#try:
-#rect.raise_for_status()
-#except requests.exceptions.HTTPError as e:
-    #print('%s' % e)
