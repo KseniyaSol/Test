@@ -15,13 +15,11 @@ def inp(method, conn):
         site_ = input(str('Enter site: '))         # httpbin.org/status/415 - example of input data
         return site_
     elif method == 'headers':
-        if 'rect' in globals():
-            headers_ = conn.headers
-            return headers_
+        headers_ = conn.headers
+        return headers_
     elif method == 'code':
-        if 'rect' in globals():
-            code_ = conn.status_code
-            return code_
+        code_ = conn.status_code
+        return code_
 
 
 def print_headers(head):
