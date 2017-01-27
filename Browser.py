@@ -24,11 +24,11 @@ def inp(method, conn):
 
 def print_headers(head):
     for key, value in head.items():
-        print(key, value)
+        print(key, ': ', value)
 rect = ''
 site = inp('input', rect)
 site = choice(site)
-rect = requests.get(site)
+rect = requests.get(site, allow_redirects=False)
 headers = inp('headers', rect)
 print('Headers of '+str(site)+' are: ')
 print_headers(headers)
