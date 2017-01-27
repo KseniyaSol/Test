@@ -1,27 +1,38 @@
 import requests
 
 
-def inp(method):
+def choice(url):
+    print('Choice your protocol http or https')
+    prot = str(input('Enter protocol: '))
+    site_ = prot+'://'+str(url)
+    return site_
+
+
+def inp(method, conn):
     if method == 'input':
-        ex = ['http://ex.org/']
-        corr = False
-        while (corr == False):
-            print('Example of input data: '+ex[0])
-            site = input('Enter site: ')         # 'http://httpbin.org/status/415' - example of input data
-            if site.find('http://') > -1:
-                corr = True
-                return site
-            else:
-                print('Input isnt correct!')
+        ex = ['ex.org']
+        print('Example of input data: '+ex[0])
+        site_ = input(str('Enter site: '))         # httpbin.org/status/415 - example of input data
+        return site_
     elif method == 'headers':
-        headers = rect.headers
-        return headers
+        if 'rect' in globals():
+            headers_ = conn.headers
+            return headers_
     elif method == 'code':
-        code = rect.status_code
-        return code
-site = inp('input')
+        if 'rect' in globals():
+            code_ = conn.status_code
+            return code_
+
+
+def print_headers(head):
+    for key, value in head.items():
+        print(key, value)
+rect = ''
+site = inp('input', rect)
+site = choice(site)
 rect = requests.get(site)
-headers = inp('headers')
-print('Headers of '+str(site)+' is '+str(headers))
-code = inp('code')
+headers = inp('headers', rect)
+print('Headers of '+str(site)+' are: ')
+print_headers(headers)
+code = inp('code', rect)
 print(str(code)+' '+rect.reason)
